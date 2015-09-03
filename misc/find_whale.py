@@ -17,5 +17,4 @@ kmeans = KMeans(init='random',
                 n_init=10)
 print "clustering"
 a = kmeans.fit(pixels)
-
-print a
+print kmeans.cluster_centers_
