@@ -25,7 +25,8 @@ class SegmentColours:
         self._kmeans.fit(pixels)
 
     def _classify_pixel(self, pixel):
-        return self._kmeans.fit(pixel)
+        designated_cluster = self._kmeans.fit(pixel)
+        return self._kmeans.cluster_centers_[designated_cluster]
 
     def _update_pixels(self):
         width, height = self._image.size
@@ -33,7 +34,8 @@ class SegmentColours:
             for h in xrange(height):
                 coordinate = (w,h)
                 pixel = self._image.getpixel(coordinate)
-                updated_pixel = self._classify_pixel(pixel)
+                print pixel
+                updated_pixel= self._classify_pixel(pixel)
                 self._image.putpixel(coordinate, updated_pixel)
 
 segment_colours = SegmentColours("w_7489.jpg")
